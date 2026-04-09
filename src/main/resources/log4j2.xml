@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <JDBC name="DatabaseAppender" tableName="logs_sistema">
+            <ConnectionFactory class="school.sptech.config.DatabaseConfig" method="getConnection" />
+            <Column name="data_hora" isEventTimestamp="true" />
+
+            <Column name="nivel" pattern="%level" isUnicode="false" />
+            <Column name="logger" pattern="%logger" isUnicode="false" />
+            <Column name="mensagem" pattern="%message" isUnicode="false" />
+            <Column name="excecao" pattern="%exception" isUnicode="false" />
+        </JDBC>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="DatabaseAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
