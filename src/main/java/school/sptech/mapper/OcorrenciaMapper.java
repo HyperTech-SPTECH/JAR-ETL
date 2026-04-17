@@ -49,8 +49,6 @@ public class OcorrenciaMapper {
         String value = formatter.formatCellValue(cell).trim();
 
         if(column.equals("CEP")) {
-            String cep = cell.getStringCellValue();
-            if(cep.length() < 8) return null;
             value = value.replaceAll("[^0-9]", "");
 
             if (value.matches("0+") || value.isEmpty()) {
