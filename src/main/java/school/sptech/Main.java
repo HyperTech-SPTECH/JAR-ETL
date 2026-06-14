@@ -13,12 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
         OcorrenciaService service = new OcorrenciaService();
-        /*
-        String caminhoLocal = "C:/Downloads/base-de-dados.xlsx";
-        try (InputStream is = new FileInputStream(new File(caminhoLocal))) {
-            service.executar(is, "base-de-dados.xlsx");
-        } catch (Exception e) { log.error(e); }
-        */
         log.info("Iniciando ETL via S3...");
         S3Service s3Service = new S3Service();
         String nomeNoS3 = "base-de-dados.xlsx";
